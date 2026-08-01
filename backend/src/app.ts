@@ -24,7 +24,8 @@ app.use(cors({
     if (
       !origin ||
       (extra && origin === extra) ||
-      /^https?:\/\/(localhost|127\.0\.0\.1|\d+\.\d+\.\d+\.\d+):5173$/.test(origin)
+      /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin) ||
+      /^capacitor:\/\/localhost$/.test(origin)
     ) {
       cb(null, true)
     } else {

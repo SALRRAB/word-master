@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import AppLayout from '@/layouts/AppLayout'
 import HomePage from '@/pages/HomePage'
 import WordbooksPage from '@/pages/WordbooksPage'
@@ -26,7 +26,7 @@ export default function App() {
   }, [])
 
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <HashRouter>
       <Routes>
         <Route element={<AppLayout />}>
           <Route index element={<HomePage />} />
@@ -42,6 +42,6 @@ export default function App() {
         <Route path="pet/game" element={<PetGamePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }

@@ -36,7 +36,17 @@ export default defineConfig(({ mode }) => {
 
   return {
     base,
-    plugins: [react(), basicSsl()],
+    plugins: [
+      react(),
+      basicSsl(),
+      // Capacitor WebView 本地服务器不支持 CORS，去掉 crossorigin 确保 ES module 能加载
+      {
+        name: 'remove-crossorigin',
+        transformIndexHtml(html) {
+          return html.replace(/ crossorigin/g, '')
+        },
+      },
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
