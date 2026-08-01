@@ -74,3 +74,47 @@
     touch-action: manipulation !important;
   }
 }
+
+/* ===== 手表小屏适配（≤360px，如小天才 Z6 320×360） ===== */
+@media (max-width: 360px) {
+  /* 全局缩小字号 */
+  html {
+    font-size: 13px;
+  }
+
+  /* 卡片和容器收紧内边距 */
+  .card, [class*="p-4"], [class*="p-5"], [class*="p-6"] {
+    padding: 0.5rem !important;
+  }
+  [class*="px-4"] { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+  [class*="px-5"] { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+  [class*="py-3"] { padding-top: 0.375rem !important; padding-bottom: 0.375rem !important; }
+  [class*="py-4"] { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+
+  /* 间距收紧 */
+  [class*="gap-4"] { gap: 0.5rem !important; }
+  [class*="gap-6"] { gap: 0.75rem !important; }
+  [class*="space-y-4"] > * + * { margin-top: 0.5rem !important; }
+
+  /* 字号降级 */
+  .text-2xl { font-size: 1.125rem !important; }
+  .text-xl  { font-size: 1rem !important; }
+  .text-lg  { font-size: 0.875rem !important; }
+  .text-base { font-size: 0.8125rem !important; }
+  .text-sm  { font-size: 0.75rem !important; }
+  .text-xs  { font-size: 0.6875rem !important; }
+
+  /* 触摸目标保障：按钮最小 44dp */
+  button, [role="button"], .btn, a.nav-link {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* 底部导航：只显示图标，隐藏文字 */
+  .watch-nav-text {
+    display: none !important;
+  }
+  .watch-nav-icon {
+    font-size: 1.5rem !important;
+  }
+}

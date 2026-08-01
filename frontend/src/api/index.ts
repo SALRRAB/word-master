@@ -7,7 +7,9 @@ import type {
   Forecast,
 } from '@/types'
 
-const BASE = '/api'
+// 手表 APK 构建时通过 VITE_API_BASE_URL 指向云端服务器
+// Web 部署时使用相对路径 /api（前后端同源）
+const BASE = import.meta.env.VITE_API_BASE_URL || '/api'
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
